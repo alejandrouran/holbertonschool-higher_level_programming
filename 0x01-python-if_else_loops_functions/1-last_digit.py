@@ -5,8 +5,8 @@ if number < 0:
     last = number % -10
 else:
     last = number % 10
-print('Last digit of', number, 'is', last, end=' ')       
-if last > 5:        
+print('Last digit of', number, 'is', last, end=' ')
+if last > 5:
     print('and is greater than 5')
 elif last == 0:
     print('and is 0')
