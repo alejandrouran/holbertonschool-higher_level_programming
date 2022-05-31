@@ -1,0 +1,18 @@
+1 The ``2-matrix_divided`` module
+  2 ======================
+  3
+  4 Using ``matrix_divided``
+  5 -------------------
+  6
+  7 Import the function:
+  8
+  9     >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+ 10
+ 11 function matrix_divided
+ 12
+ 13     >>> matrix = [
+ 14     ...    [1, 2, 3],
+ 15     ...    [4, 5, 6]
+ 16     ... ]
+ 17     >>> matrix_divided(matrix, 3)
+ 18     [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
