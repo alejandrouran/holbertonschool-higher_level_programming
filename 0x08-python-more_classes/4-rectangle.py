@@ -3,7 +3,7 @@
 
 
 class Rectangle:
-    """new object of class Square"""
+    """new object of Rectangle"""
     def __init__(self, width=0, height=0):
         """Initialize Rectangle"""
         self.width = width
@@ -52,4 +52,4 @@ class Rectangle:
         return (("#" * self.__width + "\n") * self.__height)[:-1]
 
     def ___repr__(self):
-        return "Rectangle({d}, {d})".format(self.__width, self.__height)
+        return "Rectangle({}, {})".format(self.__width, self.__height)
