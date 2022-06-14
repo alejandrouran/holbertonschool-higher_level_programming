@@ -2,24 +2,79 @@
 """
 This class will be the “base” of all other classes in this project
 """
-
 import json
+import os
+from fileinput import filename
 
 
 class Base:
     """
     Base class
     """
-
     __nb_objects = 0
 
-    def __init__(self, if=None):
+    def __init__(self, id=None):
+        if id is not None:
+            self.id = id
+        else:
+            Base.__nb_objects += 1
+            self.id = Base.__nb_objects
+
+    @staticmethod
+    def to_json_string(list_dictionaries):
+        if list_dictionaries is None or list_dictionaries == []:
+            return "[]"
+        else:
+            return json.dumps(list_dictionaries)
+
+    @classmethod
+    def save_to_file(cls, list_objs):
         """
         ...
         """
-
-        if id is None:
-            Base.__nb_objects += 1
-            self.id = Base.__nb_objects
+        if list_objs is None or list_objs == []:
+            json_s = "[]"
         else:
-            self.id = id
+            json_s = cls.to_json_string([element.to_dictionary()
+                                         for element in list_objs])
+        filename = f"{cls.__name__}.json"
+        with open(filename, "w") as file:
+            file.write(json_s)
+
+    @staticmethod
+    def from_json_string(json_string):
+        """
+        ...
+        """
+        if json_string is None or json_string == []:
+            return []
+        else:
+            return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """
+        ...
+        """
+        if cls.__name__ == "Rectangle":
+            dummy = cls(1, 1)
+        else:
+            dummy = cls(1)
+        dummy.update(**dictionary)
+        return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        """
+        ...
+        """
+        filename = cls.__name__ + ".json"
+        l = []
+        try:
+            with open(filename, 'r') as f:
+                l = cls.from_json_string(f.read())
+            for i, e in enumerate(l):
+                l[i] = cls.create(**l[i])
+        except:
+            pass
+        return l
