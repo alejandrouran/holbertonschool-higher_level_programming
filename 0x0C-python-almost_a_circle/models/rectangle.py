@@ -30,7 +30,6 @@ class Rectangle(Base):
             raise TypeError("width must be an integer")
         if value <= 0:
             raise ValueError("width must be > 0")
-
         self.__width = value
 
     @property
@@ -99,10 +98,9 @@ class Rectangle(Base):
         """
         for r in range(self.y):
             print("")
-
         for c in range(self.height):
             for k in range(self.x):
-                print("", end="")
+                print(" ", end="")
             for i in range(self.width):
                 print("#", end="")
             print("")
