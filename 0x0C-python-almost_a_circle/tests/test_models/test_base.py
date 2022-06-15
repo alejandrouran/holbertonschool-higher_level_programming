@@ -139,5 +139,6 @@ class TestBase(unittest.TestCase):
         self.assertEqual(rlist[0].__str__(), '[Square] (3) 7/2 - 10')
         self.assertEqual(rlist[0].__str__(), '[Square] (4) 0/0 - 8')
 
-if__name__ == '__main__':
-unittest.main()
+
+if __name__ == '__main__':
+    unittest.main()
