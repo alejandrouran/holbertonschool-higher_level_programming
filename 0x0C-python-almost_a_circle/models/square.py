@@ -54,7 +54,6 @@ class Square(Rectangle):
                 self.x = args[2]
             if len(args) > 3:
                 self.y = args[3]
-
         else:
             for k, value in kwargs.items():
                 if k == "id":
