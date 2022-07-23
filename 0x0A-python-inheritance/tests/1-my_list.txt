@@ -1,0 +1,31 @@
+Import the module
+>>> MyList = __import__('1-my_list').MyList
+
+Check print_sorted with empy list
+>>> my_list = MyList()
+>>> my_list.print_sorted()
+[]
+
+Check that object can be created
+>>> my_list = MyList()
+>>> my_list
+[]
+
+Check that MyList is only executed with zero argum
+>>> my_list = MyList(5)
+Traceback (most recent call last):
+TypeError: 'int' object is not iterable
+
+Check that list printed correctly
+>>> my_list = MyList()
+>>> my_list.append(1)
+>>> my_list.append(2)
+>>> my_list.append(3)
+>>> my_list.append(4)
+>>> my_list.append(5)
+>>> print(my_list)
+[1, 2, 3, 4, 5]
+
+Check that sorted list printed correctly
+>>> my_list.print_sorted()
+[1, 2, 3, 4, 5]
