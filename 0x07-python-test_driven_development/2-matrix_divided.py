@@ -11,16 +11,20 @@ def matrix_divided(matrix, div):
     """
     Function divides a matrix
     """
-    if type(matrix) is not list:
-        raise TypeError("listError")
-    for i in range(len(matrix)):
-        if i is not 0:
-            result = i - 1
-            if len(matrix[i]) is not len(matrix[result]):
-                raise TypeError("sizeError")
-    if isinstance(div, int) is False:
-        raise TypeError('div must be a number')
-    if div is 0:
-        raise TypeError('division by zero')
+    if (not isinstance(matrix, list) or matrix == [] or
+        not all(isinstance(row, list) for row in matrix) or
+        not all((isinstance(l, int) or isinstance(l, float))
+                for l in [num for row in matrix for num in row])):
+        raise TypeError("matrix must be a matrix (list of lists) of "
+                        "integers/floats")
 
-    return [[round(i / div, 2) for i in m_list] for m_list in matrix]
+    if not all(len(row) == len(matrix[0]) for row in matrix):
+        raise TypeError("Each row of the matrix must have the same size")
+
+    if not isinstance(div, int) and not isinstance(div, float):
+        raise TypeError("div must be a number")
+
+    if div == 0:
+        raise ZeroDivisionError("division by zero")
+
+    return ([list(map(lambda x: round(x / div, 2), row)) for row in matrix])
