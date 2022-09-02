@@ -1,8 +1,7 @@
-!/usr/bin/python3
+#!/usr/bin/python3
 """
-contains the class definition
+contains the class definition of a City
 """
-
 import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
