@@ -5,7 +5,7 @@ contains the class definition
 import sqlalchemy
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import relantioship
+from sqlalchemy.orm import relantionship
 
 Base = declarative_base()
 
