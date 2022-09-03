@@ -6,19 +6,15 @@ takes in a letter and sends a POST
 if __name__ == "__main__":
     import requests
     import sys
-    url = "http://0.0.0.0:5000/search_user"
+    let = "" if len(sys.argv) == 1 else sys.argv[1]
+    pl = {"q": let}
+
+    r = requests.post("http://0.0.0.0:5000/search_user", data=pl)
     try:
-        a = sys.argv[1]
-    exept Exception:
-        a = ""
-    q = {"q": a}
-    response = requests.post(url, data=q)
-    try:
-        result = response.json()
-    except Exception:
+        response = r.json()
+        if response == {}:
+            print("No result")
+        else:
+            print("[{}] {}".format(response.get("id"), response.get("name")))
+    except ValueError:
         print("Not a valid JSON")
-        exit()
-    try:
-        print("[{}] {}".format(result['id'], result['name']))
-    except Exeption:
-        print("No result")
