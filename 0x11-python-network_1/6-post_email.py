@@ -8,4 +8,4 @@ if __name__ == "__main__":
     import sys
     pyl = {"email": sys.argv[2]}
     response = requests.post(sys.argv[1], data=pyl)
-    print(r.text)
+    print(response.text)
